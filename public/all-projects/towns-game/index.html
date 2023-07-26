@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Игра в города</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Игра в города</h1>
+    </header>
+
+    <main>
+        <section>
+	    <h2>Добавить города</h2>
+	    <form id="city-form">
+		<textarea id="city-input" placeholder="Введите города, разделенные новой строкой"></textarea>
+		<button type="submit">Добавить города</button>
+		<button type="button" id="clear-list">Очистить список</button>
+	    </form>
+            <ul id="city-list">
+                <!-- Список городов будет добавляться сюда -->
+            </ul>
+        </section>
+
+        <section>
+            <h2>Игра</h2>
+            <p id="current-city">Текущий город: <span></span></p>
+            <form id="answer-form">
+                <label for="answer-input">Введите ваш ответ:</label>
+                <input type="text" id="answer-input" autocomplete="off">
+                <button type="submit">Ответить</button>
+            </form>
+            <p id="score">Счет: <span>0</span></p>
+        </section>
+
+        <section>
+            <button id="start-game">Начать игру</button>
+            <button id="end-game">Закончить игру</button>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Удаление HTML-тегов, кроме &lt;br&gt;</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    textarea, button, pre {
+      display: block;
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+    button {
+      padding: 0.5rem;
+      background-color: #4CAF50;
+      color: white;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      text-transform: uppercase;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    pre {
+      background-color: #f1f1f1;
+      padding: 1rem;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+  </style>
+</head>
+<body>
+  <h1>Удаление HTML-тегов, кроме &lt;br&gt;</h1>
+  <textarea id="inputText" rows="6" placeholder="Вставьте текст с HTML-тегами здесь..."></textarea>
+  <button id="processButton">Обработать текст</button>
+  <pre id="outputText"></pre>
+  <button id="copyButton">Копировать текст</button>
+
+  <script>
+    function removeHTMLTagsExceptBR(text) {
+      const regex = /<(?!br\s*\/?)[^>]+>/gi;
+      const newText = text.replace(regex, '');
+      return newText.replace(/(<br\s*\/?>\s*){2}/gi, '\n\n');
+    }
+
+    const inputText = document.getElementById('inputText');
+    const processButton = document.getElementById('processButton');
+    const outputText = document.getElementById('outputText');
+    const copyButton = document.getElementById('copyButton');
+
+    processButton.addEventListener('click', () => {
+      const result = removeHTMLTagsExceptBR(inputText.value);
+      outputText.textContent = result;
+    });
+
+    copyButton.addEventListener('click', () => {
+      const textarea = document.createElement('textarea');
+      textarea.value = outputText.textContent;
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand('copy');s
+      document.body.removeChild(textarea);
+    });
+  </script>
+</body>
+</html>
+
